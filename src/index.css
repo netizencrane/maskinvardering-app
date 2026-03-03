@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 96%;
+
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 43 96% 56%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 22%;
+    --muted-foreground: 215 20% 75%;
+
+    --accent: 217 33% 22%;
+    --accent-foreground: 210 40% 96%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 210 40% 98%;
+
+    --border: 217 25% 25%;
+    --input: 217 25% 25%;
+    --ring: 43 96% 56%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 50% 8%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: 43 96% 56%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 25% 18%;
+    --sidebar-ring: 43 96% 56%;
+
+    /* Custom tokens */
+    --glow-primary: 0 0 20px hsl(43 96% 56% / 0.3);
+    --glow-secondary: 0 0 20px hsl(199 89% 48% / 0.3);
+    --gradient-primary: linear-gradient(135deg, hsl(43 96% 56%), hsl(38 92% 50%));
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 56%), hsl(38 100% 45%), hsl(43 96% 56%));
+    --gradient-cyber: linear-gradient(135deg, hsl(199 89% 48%), hsl(210 100% 55%));
+    --gradient-surface: linear-gradient(180deg, hsl(217 33% 19%), hsl(217 33% 15%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(222 47% 11%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(217 25% 30%);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(217 25% 40%);
+  }
+}
+
+@layer components {
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .gradient-cyber {
+    background: var(--gradient-cyber);
+  }
+
+  .card-surface {
+    background: var(--gradient-surface);
+  }
+
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .search-glow {
+    box-shadow: 0 0 0 1px hsl(43 96% 56% / 0.2), 0 0 30px hsl(43 96% 56% / 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .search-glow:focus-within {
+    box-shadow: 0 0 0 2px hsl(43 96% 56% / 0.5), 0 0 40px hsl(43 96% 56% / 0.2);
+  }
+
+  .precision-meter {
+    background: linear-gradient(90deg, hsl(0 84% 60%), hsl(43 96% 56%), hsl(160 84% 39%));
+  }
+
+  .pulse-green {
+    animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .ticker-scroll {
+    animation: ticker 30s linear infinite;
+  }
+
+  .ticker-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
